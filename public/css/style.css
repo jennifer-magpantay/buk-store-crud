@@ -34,6 +34,7 @@
 /* ---------- GLOBAL | ALPHABETIC ORDER ---------- */
 html {
   font-family: "Roboto", sans-serif;
+  background-image: var(--background-image);
 }
 h5 {
   margin-bottom: 2%;
@@ -43,19 +44,25 @@ img {
   height: auto;
   margin: 1% 2% 0 0;
 }
+.root {
+  display: none;
+  padding-left: 2%;
+  margin-top: 2%;
+  font-size: 18px;
+}
 /* ---------- HEADER ---------- */
 header {
   display: flex;
+  flex-flow: column;
   align-items: center;
   justify-content: center;
-  flex-flow: column;
 }
 .header__message {
   margin-bottom: 2%;
   font-family: "momstypewriterregular";
   font-size: 6vw;
-  text-align: center;
   line-height: auto;
+  text-align: center;
 }
 /* ---------- NAV ---------- */
 nav {
@@ -65,14 +72,14 @@ nav {
   text-align: right;
 }
 nav a {
-  font-size: 1.125em;
   font-family: "myLightFont";
+  font-size: 1.125em;
 }
 /* ---------- MAIN ---------- */
 .main__message h1 {
   font-family: "myLightFont";
-  font-size: 3vw;
   text-align: center;
+  font-size: 3vw;
 }
 .hr--dotted-line,
 .hr--dashed-line {
@@ -82,38 +89,38 @@ nav a {
   border-bottom: 0;
 }
 .main__button--container {
-  display: flex;
   width: 100%;
-  padding: 0 2%;
+  display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 2%;
 }
 .button--books,
 .sales {
-  font-family: "myLightFont";
-  font-size: 1.125em;
-  color: var(--black) !important;
-  text-transform: uppercase;
-  text-decoration: none;
-  text-align: center;
-  background: var(--white);
-  padding: 20px;
-  border: 4px solid var(--gray) !important;
-  display: inline-block;
-  transition: all 0.4s ease 0s;
   width: 18%;
   height: auto;
+  display: inline-block;
+  padding: 20px;
+  background: var(--white);
+  border: 4px solid var(--gray) !important;
+  color: var(--black) !important;
+  font-family: "myLightFont";
+  font-size: 1.125em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.4s ease 0s;
 }
 .button--books:hover {
-  color: var(--white) !important;
   background: var(--gray);
   border-color: var(--gray) !important;
+  color: var(--white) !important;
   transition: all 0.4s ease 0s;
 }
 .sales:hover {
-  color: var(--white) !important;
   background: var(--red);
   border-color: var(--red) !important;
+  color: var(--white) !important;
   transition: all 0.4s ease 0s;
 }
 .root__container {
@@ -125,80 +132,74 @@ nav a {
 .form--update,
 .form--delete {
   display: none;
-  margin-bottom: 15px;
+  padding-left: 1%;
+  background-color: var(--white);
+  border: 4px solid var(--gray);
 }
 .form__container {
   width: 100%;
-  padding: 0 2%;
+  padding: 1% 2%;
 }
 .form__p {
+  margin: 2% 0;
   font-family: "myLightFont";
-  font-size: 1.5vw;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 label {
-  width: 75%;
+  width: 100%;
   display: block;
   line-height: 35px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-right: 10px;
+  padding: 1% 2% 1% 0;
 }
 span {
   font-family: "myLightFont";
-  font-size: 1.5vw;
-  padding-left: 10px;
-  padding-right: 20px;
+  font-size: 1.5em;
 }
-input[type="text"] {
-  font-size: 1.5vw;
-  padding-top: 6px;
-  padding-bottom: 6px;
+input[type="text"],
+input[list="category"] {
   width: 80%;
   float: right;
+  padding: 6px;
   border: none;
-  border-radius: 4px;
-  border: 1px solid var(--lg-gray);
+  border: 1px solid var(--gray);
+  font-size: 1.5em;
 }
 input[type="submit"] {
-  font-family: "myLightFont";
-  font-size: 1.5vw;
-  color: var(--white);
+  padding: 8px 18px;
+  margin-bottom: 2%;
   background: var(--gray);
-}
-
-#delete {
-  font-family: "myLightFont";
-  font-size: 1.5vw;
   color: var(--white);
-  background: var(--gray);
-  border: none;
-  border-radius: 4px;
-  width: 75%;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  font-family: "myLightFont";
+  font-size: 1.5em;
 }
 table {
   display: none;
-  font-family: "myLightFont";
-  font-size: 1.5vw;
-  text-transform: uppercase;
-  text-decoration: none;
-  border-collapse: collapse;
   width: 100%;
+  height: auto;
+  padding: 0 2%;
+  margin: 2% 0 0 0;
+  border-collapse: collapse;
+  font-size: 1em;
+  text-transform: uppercase;
 }
 th,
 td {
-  padding: 10px 100px 10px 10px;
+  width: auto;
+  height: auto;
+  padding: 12px;
   border-bottom: 1px solid var(--lg-gray);
   text-align: left;
 }
 thead {
+  width: 100%;
   color: var(--white);
   background: var(--gray);
 }
 tbody {
   color: var(--gray);
-  background: var(--lg-gray);
+  background: var(--white);
 }
 /* ---------- FOOTER ---------- */
 footer {
@@ -212,7 +213,7 @@ footer {
   width: 100%;
   padding: 2%;
   color: var(--white);
-  font-size: 0.75em;
+  font-size: 0.875em;
 }
 .footer__container p {
   font-size: 0.9375em;
@@ -220,22 +221,22 @@ footer {
 .footer__form {
   width: 100%;
   display: flex;
+  margin-top: 1%;
   align-items: center;
   justify-content: space-between;
 }
 .footer__form input[type="text"],
 .footer__form input[type="submit"] {
-  margin-top: 1%;
+  padding: 6px;
   border: none;
-  border-radius: 4px;
-  font-size: 1em;
+  font-size: 0.875em;
 }
 .footer__form input[type="text"] {
   width: 79%;
 }
 .footer__form input[type="submit"] {
   width: 20%;
-  padding: 6px;
+  margin-top: 6px;
   background-color: var(--white);
   color: var(--gray);
 }

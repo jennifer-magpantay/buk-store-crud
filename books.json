@@ -1,5 +1,5 @@
 {
-  "nextId": 31,
+  "nextId": 65,
   "books": [
     {
       "id": 1,
@@ -209,6 +209,48 @@
       "title": "Flower, Fist, and Bestial Wail",
       "year": 1960,
       "price": 19.9,
+      "category": "Poetry Collections"
+    },
+    {
+      "id": 54,
+      "title": "I wanna hold your hand forever and ever again",
+      "year": "1998",
+      "price": "12.99",
+      "category": "Poetry Collections"
+    },
+    {
+      "id": 55,
+      "title": "Diariamente",
+      "year": "2012",
+      "price": "19.99",
+      "category": "Novel"
+    },
+    {
+      "id": 56,
+      "title": "Once",
+      "year": "1999",
+      "price": "16.45",
+      "category": "Novel"
+    },
+    {
+      "id": 59,
+      "title": "Begin Again",
+      "year": "1999",
+      "price": "16.45",
+      "category": "Novel"
+    },
+    {
+      "id": 61,
+      "title": "Feeling OK",
+      "year": "2008",
+      "price": "19.99",
+      "category": "Poetry Collections"
+    },
+    {
+      "id": 62,
+      "title": "Boyfriend",
+      "year": "2020",
+      "price": "19.99",
       "category": "Poetry Collections"
     }
   ]

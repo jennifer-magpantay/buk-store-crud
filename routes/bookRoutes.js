@@ -5,7 +5,7 @@ import { promises as fs } from "fs";
 const router = express.Router();
 
 //get all titles
-router.get("/", async (req, res, next) => {
+router.get("/", async (_req, res, next) => {
   try {
     //readh the file
     const data = JSON.parse(await fs.readFile(global.fileName));
@@ -19,32 +19,32 @@ router.get("/", async (req, res, next) => {
 
 //get titles by id
 //http://localhost:3000/books/1
-router.get("/:id", async (req, res, next) => {
-  try {
-    //readh the file
-    const data = JSON.parse(await fs.readFile(global.fileName));
-    //find the id in the file
-    const book = data.books.find((item) => item.id === parseInt(req.params.id));
-    res.send(book);
-  } catch (err) {
-    next(err);
-  }
-});
+// router.get("/:id", async (req, res, next) => {
+//   try {
+//     //readh the file
+//     const data = JSON.parse(await fs.readFile(global.fileName));
+//     //find the id in the file
+//     const book = data.books.find((item) => item.id === parseInt(req.params.id));
+//     res.send(book);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
 //get titles by title, using URL query
 //http://localhost:3000/books?title=It Catches My Heart in Its Hands
-router.get("/", async (req, res, next) => {
-  try {
-    let query = req.query;
-    //readh the file
-    const data = JSON.parse(await fs.readFile(global.fileName));
-    //find the id in the file
-    const book = data.books.find((item) => item.title === query.title);
-    res.send(book);
-  } catch (err) {
-    next(err);
-  }
-});
+// router.get("/", async (req, res, next) => {
+//   try {
+//     let query = req.query;
+//     //readh the file
+//     const data = JSON.parse(await fs.readFile(global.fileName));
+//     //find the id in the file
+//     const book = data.books.find((item) => item.title === query.title);
+//     res.send(book);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
 //add a new title
 router.post("/", async (req, res, next) => {
@@ -71,16 +71,44 @@ router.post("/", async (req, res, next) => {
 });
 
 //update a title
-router.put("/", async (res, req, next) => {
+router.put("/", async (req, res, next) => {
   try {
+    //create an variable that will hold the result of our request
+    let book = req.body;
+    //read file
+    const data = JSON.parse(await fs.readFile(global.fileName));
+    //find the index of the element inside the json file, where the item id is === id of the req.body
+    const index = data.books.findIndex((item) => item.id === book.id);
+    //once it is found, set it the props you want to update
+    data.books[index].title = book.title;
+    data.books[index].year = book.year;
+    data.books[index].price = book.price;
+    data.books[index].category = book.category;
+    //now, over write the file
+    await fs.writeFile(global.fileName, JSON.stringify(data, null, 2));
+    //return the element
+    console.log(book);
+    res.send(data.books[index]);
   } catch (err) {
     next(err);
   }
 });
 
-//delete a title
-router.delete("/", async (res, req, next) => {
+//delete a title by id
+router.delete("/:id", async (req, res, next) => {
   try {
+    //read file
+    const data = JSON.parse(await fs.readFile(global.fileName));
+    //save the deleted id into an temp variable and return to the user
+    let del = data.books.filter((item) => item.id === parseInt(req.params.id));
+    //now, filter id we want to remove from the original json file
+    data.books = data.books.filter(
+      (item) => item.id !== parseInt(req.params.id)
+    );
+    //and over write it, without the chosen id
+    await fs.writeFile(global.fileName, JSON.stringify(data, null, 2));
+    //return the data deleted
+    res.send(del);
   } catch (err) {
     next(err);
   }

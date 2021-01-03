@@ -71,15 +71,30 @@ router.post("/", async (req, res, next) => {
 });
 
 //update a title
+// router.put("/:id", async (req, res, next) => {
+// updating passing all params as body required
 router.put("/", async (req, res, next) => {
   try {
     //create an variable that will hold the result of our request
     let book = req.body;
     //read file
     const data = JSON.parse(await fs.readFile(global.fileName));
+
+    book = {
+      id: book.id,
+      title: book.title,
+      year: book.year,
+      price: book.price,
+      category: book.category,
+    };
     //find the index of the element inside the json file, where the item id is === id of the req.body
     const index = data.books.findIndex((item) => item.id === book.id);
+
+    if (index === -1) {
+      throw new Error("ID Title  not found. Try it again");
+    }
     //once it is found, set it the props you want to update
+    // data.books[index].id = book.id;
     data.books[index].title = book.title;
     data.books[index].year = book.year;
     data.books[index].price = book.price;
@@ -87,7 +102,7 @@ router.put("/", async (req, res, next) => {
     //now, over write the file
     await fs.writeFile(global.fileName, JSON.stringify(data, null, 2));
     //return the element
-    console.log(book);
+    console.log(book.id);
     res.send(data.books[index]);
   } catch (err) {
     next(err);

@@ -14,20 +14,15 @@ function displayUpdateForm() {
 }
 
 function updateBookData() {
-  let id = document.querySelector("#id").value;
-  let title = document.querySelector("#title").value;
-  let year = document.querySelector("#year").value;
-  let price = document.querySelector("#price").value;
-  let category = document.querySelector("#categoryList").value;
+  const id = document.querySelector("#id").value;
+  const title = document.querySelector("#title").value;
+  const year = document.querySelector("#year").value;
+  const price = document.querySelector("#price").value;
+  const category = document.querySelector("#categoryList").value;
 
   //then, assing then to another variable as object
-  let book = {
-    id: id,
-    title: title,
-    year: year,
-    price: price,
-    category: category,
-  };
+  const book = { id: id, title: title, year: year, price: price, category: category };
+
   // const uri = document.querySelector("#id").value;
   const url = "http://localhost:3000/books/";
   const options = {
@@ -35,22 +30,27 @@ function updateBookData() {
     cache: "no-cache",
     credentials: "include",
     headers: {
-      "Content-type": "application/json; charset=UTF-8",
+      Accept: "application/json, text/plain, */*",
+      "Content-type": "application/json",
     },
     body: JSON.stringify(book),
   };
-
+  // fetch(url + uri, options)
   fetch(url, options)
-    .then((response) => response.json())
-    .then((book) => console.log(book))
+    .then((response) => {
+      // console.log(response);
+      return response.json();
+    })
+    .then((book) => {
+      console.log(book);
+    })
     .catch((error) => {
       console.log("Error");
-      // console.error(error);
-      alert(error);
+      console.error(error);
     });
 }
 
-//ERROR: FETCHING DATA - ???
+//ERROR: FETCHING DATA - ??? //POSTMAN WORKING PERFECTLY!!!
 // preventEventDefault();
 // prevent default seems not working - WHY KEEPS RELOADING THE PAGE??
 //prevent the page to reload once submit is pressed

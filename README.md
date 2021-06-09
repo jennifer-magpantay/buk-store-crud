@@ -1,15 +1,29 @@
-# BUK SHOP - CRUD
-## Interactive Web Application II | CCT College Dublin 3rd Year
+# Buk Store
 
-As part of Interactive Web Development II module of the IT degree, students were required to keep working and to improve the first project - an online store. 
-As the first requeriments, the application should allow the user to control the stock of products of the application. But for this version, other requirements were asked.
+### Web Development - CCT College Dublin 
 
-Minimum requirements:
-- Create a CRUD application, to create, to read, to update and to delete products;
-- Use Postman for the HTPPS requests;
-- Manage the data through MongoDB.
+As part of the Web Development module, students were asked to develop a web-based application to create, read, update, and delete elements.
 
-Achievements:
-- Connection with MongoDB and routes for HTTPS requests added;
-- GET, POST and DELETE requests working fine;
-- PUT requests working just through Postman.
+### Goals
+
+Implement HTTP requests, applying CRUD functions, follow HTML best practices and responsiveness to the layout. 
+
+### Status: 
+
+Refactoring code and fixing bugs after tests.
+
+## Tech Stack
+
+HTML5, CSS3, Sass, JavaScript, Postman.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+    
+## Author
+
+Developed by Jennifer Magpantay 
+
+**Reach me out** 
+[![Linkedin Badge](https://img.shields.io/badge/-Jennifer-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/jennifermagpantay/)](https://www.linkedin.com/in/jennifermagpantay/) [![Gmail Badge](https://img.shields.io/badge/-jennifer.magpantay@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:jennifer.magpantay@gmail.com)](mailto:jennifer.magpantay@gmail.com)

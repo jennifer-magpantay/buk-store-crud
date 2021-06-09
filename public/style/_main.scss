@@ -79,8 +79,59 @@
   }
 }
 
+// Form
+
+.form__container {
+   display: none;
+}
+
+form {
+   width: 100%;
+  padding: 1em;
+  background-color: $color-lg-gray;
+  box-shadow: $box-shadow;
+
+  @include tablet {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .form__row {
+    @include tablet {
+      flex: 0 1 49%;
+    }
+
+    label {
+      display: block;
+      font-weight: 500;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.25em 0.5em;
+      cursor: pointer;
+    }
+
+    .form__button {
+      @extend %buttons;
+      width: 49%;
+      margin-top: 1em;
+      background-color: $color-lg-gray;
+      border-color: $color-text;
+
+      &:hover,
+      &:focus {
+        background-color: $color-text;
+        color: $color-lg-gray;
+      }
+    }
+  }
+}
+
 // Footer
 footer {
+  margin-top: 2em;
   background-color: $color-text;
   color: $color-lg-gray;
 }

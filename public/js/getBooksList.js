@@ -26,8 +26,7 @@ function renderTableContent(data) {
     // display the table 
     const table = document.querySelector('#table');
     table.style.display = "block";
-    console.log(data.books);
-
+    
     // create HTML elements for each item from data list
     for (const book of data.books) {
         const tr = document.createElement('tr');

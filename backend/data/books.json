@@ -1,5 +1,5 @@
 {
-  "nextId": 67,
+  "nextId": 76,
   "books": [
     {
       "id": 1,
@@ -210,6 +210,69 @@
       "year": 1960,
       "price": 19.9,
       "category": "Poetry"
+    },
+    {
+      "id": 67,
+      "title": "A Menina de Ouro",
+      "category": "Novel",
+      "year": 2021,
+      "price": 14.9
+    },
+    {
+      "id": 68,
+      "title": "Lorem",
+      "category": "Novel",
+      "year": "2021",
+      "price": "1.9"
+    },
+    {
+      "id": 69,
+      "title": "Noia MInha",
+      "category": "Novel",
+      "year": "2021",
+      "price": "15.9"
+    },
+    {
+      "id": 70,
+      "title": "Calcinha Larga",
+      "category": "Novel",
+      "year": "2021",
+      "price": "16.9"
+    },
+    {
+      "id": 71,
+      "title": "",
+      "category": "",
+      "year": "",
+      "price": ""
+    },
+    {
+      "id": 72,
+      "title": "",
+      "category": "",
+      "year": "",
+      "price": ""
+    },
+    {
+      "id": 73,
+      "title": "",
+      "category": "",
+      "year": "",
+      "price": ""
+    },
+    {
+      "id": 74,
+      "title": "Outras Mamas",
+      "category": "Novel",
+      "year": "2021",
+      "price": "15.9"
+    },
+    {
+      "id": 75,
+      "title": "Testing",
+      "category": "Poetry",
+      "year": "2021",
+      "price": "16.9"
     }
   ]
 }

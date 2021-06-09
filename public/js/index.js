@@ -1,17 +1,21 @@
 import getBooksList from '../js/getBooksList.js';
+import addNewBook from '../js/addNewBook.js'
 
-// global variables
 function start() {
     // set DOM elements
     const buttonGet = document.querySelector('#button-get');
+    const buttonAdd = document.querySelector('#button-add');
 
     // set events
-    buttonGet.addEventListener('click', getBooks)
-}
-function getBooks(event) {
-    event.preventDefault();
-    console.log('get books from list')
-    getBooksList();
+    buttonGet.addEventListener('click', (event) => {
+        event.preventDefault();
+        getBooksList();
+    })
+
+    buttonAdd.addEventListener('click', (event) => {
+        event.preventDefault();
+        addNewBook();
+    })
 }
 
 // function getBooksList(event) {

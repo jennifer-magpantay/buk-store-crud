@@ -72,7 +72,7 @@ select {
   }
 }
 
-.buttons__container .button {
+.buttons__container .button, form .form__row .form__button {
   display: inline-block;
   -webkit-box-flex: 0;
       -ms-flex: 0 1 calc(100% / 5);
@@ -89,8 +89,8 @@ select {
 }
 
 @media (min-width: 768px) {
-  .buttons__container .button {
-    border: 4px;
+  .buttons__container .button, form .form__row .form__button {
+    border: 3px;
   }
 }
 
@@ -135,8 +135,10 @@ a:focus {
 a,
 button,
 form,
+input,
 h5,
 p,
+label,
 table {
   font-family: "Roboto", sans-serif;
   font-size: clamp(1.2rem, 1.6vw, 1.6rem);
@@ -236,7 +238,64 @@ header {
   font-weight: 500;
 }
 
+.form__container {
+  display: none;
+}
+
+form {
+  width: 100%;
+  padding: 1em;
+  background-color: #fbfbfb;
+  -webkit-box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.25);
+}
+
+@media (min-width: 768px) {
+  form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+
+@media (min-width: 768px) {
+  form .form__row {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 49%;
+            flex: 0 1 49%;
+  }
+}
+
+form .form__row label {
+  display: block;
+  font-weight: 500;
+}
+
+form .form__row input {
+  width: 100%;
+  padding: 0.25em 0.5em;
+  cursor: pointer;
+}
+
+form .form__row .form__button {
+  width: 49%;
+  margin-top: 1em;
+  background-color: #fbfbfb;
+  border-color: #282828;
+}
+
+form .form__row .form__button:hover, form .form__row .form__button:focus {
+  background-color: #282828;
+  color: #fbfbfb;
+}
+
 footer {
+  margin-top: 2em;
   background-color: #282828;
   color: #fbfbfb;
 }

@@ -49,6 +49,7 @@ router.get("/", async (_req, res, next) => {
 
 //add a new title
 router.post("/", async (req, res, next) => {
+  // res.setHeader("Access-Control-Allow-Origin", "*");
   try {
     //create an variable that will hold the result of our request
     let book = req.body;
@@ -58,10 +59,11 @@ router.post("/", async (req, res, next) => {
     book = {
       id: data.nextId++,
       title: book.title,
+      category: book.category,
       year: book.year,
       price: book.price,
-      category: book.category,
     };
+
     //push all new info into json
     data.books.push(book);
     await fs.writeFile(global.fileName, JSON.stringify(data, null, 2));

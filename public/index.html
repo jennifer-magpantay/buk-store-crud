@@ -53,7 +53,7 @@
             <div class="buttons__container">
                 <!-- add a button for each CRUD function-->
                 <button id="button-get" class="button">DISPLAY</button>
-                <button id="button-add" class="button" onclick="addBook()">ADD</button>
+                <button id="button-add" class="button">ADD</button>
                 <button id="button-sales" class="button sales" onclick="sales()">SALES</button>
                 <button id="button-update" class="button" onclick="updateBook()">UPDATE</button>
                 <button id="button-delete" class="button" onclick="deleteBook()">DELETE</button>
@@ -63,8 +63,6 @@
         <!-- root -->
         <div class="results">
             <div class="results__container">
-
-                <div id="root" class="root"></div>
 
                 <!-- add a table to insert the content from the get request/read/displayall-->
                 <!-- table -->
@@ -87,8 +85,39 @@
 
             <!-- form -->
             <div class="form__container">
-                <form action=""></form>
+                <form>
+                    <div class="form__row">
+                        <label for="title">Title</label>
+                        <input type="text" name="title" id="title">
+                    </div>
+
+                    <div class="form__row">
+                        <label for="category">Category</label>
+                        <input list="category" />
+                        <datalist id="category">
+                            <option value="Chapbooks">
+                            <option value="Poetry">
+                            <option value="Novel">
+                        </datalist>
+                    </div>
+
+                    <div class="form__row">
+                        <label for="year">Year</label>
+                        <input type="number" name="year" id="year">
+                    </div>
+
+                    <div class="form__row">
+                        <label for="price">Price</label>
+                        <input type="number" name="price" id="price" step="0.10">
+                    </div>
+
+                    <div class="form__row">
+                        <button type="submit" class="form__button" id="button-submit">SAVE</button>
+                        <button type="button" class="form__button" id="button-clear">CLEAR</button>
+                    </div>
+                </form>
             </div>
+
         </div>
     </main>
 
@@ -138,7 +167,7 @@
     </footer>
 
     <!-- script -->
-    <script  type="module" src="js/index.js"></script>
+    <script type="module" src="js/index.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,124 @@
+.hr--dotted-line,
+.hr--dashed-line {
+  margin: 1em 0em;
+  border-top: 5px dotted $color-text;
+  border-bottom: 0;
+}
+
+// Hero
+.hero,
+.buttons,
+.results,
+.footer__container {
+  padding: 1em 8.33%;
+}
+
+.hero {
+  h1 {
+    margin-bottom: 2em;
+  }
+  h2 {
+    text-shadow: $text-shadow;
+  }
+}
+
+// Main
+.buttons__container {
+  display: flex;
+  margin-bottom: 2em;
+
+  .button {
+    @extend %buttons;
+    background-color: $color-lg-gray;
+    border-color: $color-text;
+
+    &:hover,
+    &:focus {
+      background-color: $color-text;
+      color: $color-lg-gray;
+    }
+
+    &:not(:last-child) {
+      margin-right: 0.1em;
+
+      @include tablet {
+        margin-right: 0.5em;
+      }
+    }
+  }
+
+  .button.sales {
+    &:hover,
+    &:focus {
+      background-color: $color-red;
+      border-color: $color-red;
+      color: $color-lg-gray;
+    }
+  }
+}
+
+// Root
+.results {
+  table {
+    display: none;
+    width: 100%;
+    background-color: $color-lg-gray;
+    border-collapse: separate;
+    border-spacing: 1em;
+    box-shadow: $box-shadow;
+
+    thead * {
+      color: $color-dk-gray;
+      text-align: left;
+    }
+
+    tbody tr:hover,
+    tbody tr:focus {
+      font-weight: 500;
+    }
+  }
+}
+
+// Footer
+footer {
+  background-color: $color-text;
+  color: $color-lg-gray;
+}
+
+.footer__container {
+  @include tablet {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  &--content {
+    margin-bottom: 1em;
+
+    @include tablet {
+      flex: 0 1 calc(100% / 3);
+
+      &:last-child {
+        margin-left: 2em;
+      }
+    }
+
+    h5 {
+      margin-bottom: 0.5em;
+    }
+
+    .social-media__list {
+      display: inline-flex;
+
+      &--link {
+        &:not(:last-child) {
+          margin-right: 1em;
+        }
+
+        & * .icon {
+          width: 2em;
+        }
+      }
+    }
+  }
+}

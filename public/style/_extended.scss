@@ -1,0 +1,15 @@
+%buttons {
+  display: inline-block;
+  flex: 0 1 calc(100% / 5);
+  padding: 0.5em;
+  border: 2px;
+  border-style: solid;
+  box-shadow: $box-shadow;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: $transitions;
+
+  @include tablet {
+    border: 4px;
+  }
+}

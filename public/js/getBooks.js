@@ -17,7 +17,7 @@ function displayTable() {
 
 function getAllBooks() {
   //replacing localhost url by heroku application url
-  const url = "http://localhost:3000/books";
+  
   //getting request by fecth
   fetch(url)
     .then((response) => {

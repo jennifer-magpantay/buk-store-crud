@@ -2,8 +2,8 @@ import express from "express";
 import cors from "cors";
 import route from "./routes/bookRoutes.js";
 
-//global variables
-global.fileName = "books.json";
+//global variables: path for data folder
+global.fileName = "./data/books.json";
 
 //creating a variable app and setting it to use a json file and cors
 const app = express();

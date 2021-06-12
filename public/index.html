@@ -15,10 +15,15 @@
 
     <!-- STYLE -->
     <link rel="stylesheet" type="text/css" href="style/index.css">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/b7fbddd43a.js" crossorigin="anonymous"></script>
+
     <title>BUK'S STORE</title>
 </head>
 
 <body>
+
     <!-- header -->
     <header>
         <!-- nav -->
@@ -52,11 +57,10 @@
         <div class="buttons">
             <div class="buttons__container">
                 <!-- add a button for each CRUD function-->
-                <button id="button-get" class="button">DISPLAY</button>
-                <button id="button-add" class="button">ADD</button>
-                <button id="button-sales" class="button sales" onclick="sales()">SALES</button>
-                <button id="button-update" class="button" onclick="updateBook()">UPDATE</button>
-                <button id="button-delete" class="button" onclick="deleteBook()">DELETE</button>
+                <button id="js-button-get" class="button">DISPLAY ALL TITLES</button>
+                <button id="js-button-add" class="button">ADD NEW BOOK</button>
+                <button id="button-delete" class="button">DELETE</button>
+                <button id="button-update" class="button">SEARCH</button>                
             </div>
         </div>
 
@@ -66,7 +70,7 @@
 
                 <!-- add a table to insert the content from the get request/read/displayall-->
                 <!-- table -->
-                <table id="table" class="table">
+                <table id="js-table" class="table">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -74,50 +78,59 @@
                             <th>CATEGORY</th>
                             <th>YEAR</th>
                             <th>PRICE</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
 
-                    <tbody id="tBody">
-                    </tbody>
+                    <tbody id="js-tbody"></tbody>
                 </table>
 
             </div>
 
-            <!-- form -->
-            <div class="form__container">
-                <form>
-                    <div class="form__row">
-                        <label for="title">Title</label>
-                        <input type="text" name="title" id="title">
+            <!-- modal -->
+            <div class="modal" id="js-modal">
+                <!-- modal content -->
+                <div class="modal__content">
+                    <!-- button close -->
+                    <span class="modal__content--btn-close">&times;</span>
+
+                    <!-- form -->
+                    <div class="form__container">
+                        <form>
+                            <div class="form__row">
+                                <label for="title">Title</label>
+                                <input type="text" name="title" id="title">
+                            </div>
+
+                            <div class="form__row">
+                                <label for="category">Category</label>
+                                <select name="category" id="category">
+                                    <option value="Chapbooks">Chapbooks</option>
+                                    <option value="Poetry">Poetry</option>
+                                    <option value="Novel">Novel</option>
+                                </select>
+                            </div>
+
+                            <div class="form__row">
+                                <label for="year">Year</label>
+                                <input type="number" name="year" id="year">
+                            </div>
+
+                            <div class="form__row">
+                                <label for="price">Price</label>
+                                <input type="number" name="price" id="price" step="0.10">
+                            </div>
+
+                            <div class="form__row">
+                                <button type="submit" class="form__button" id="js-button-submit">SAVE</button>
+                                <button type="button" class="form__button" id="js-button-clear">CLEAR</button>
+                            </div>
+                        </form>
                     </div>
 
-                    <div class="form__row">
-                        <label for="category">Category</label>
-                        <input list="category" />
-                        <datalist id="category">
-                            <option value="Chapbooks">
-                            <option value="Poetry">
-                            <option value="Novel">
-                        </datalist>
-                    </div>
-
-                    <div class="form__row">
-                        <label for="year">Year</label>
-                        <input type="number" name="year" id="year">
-                    </div>
-
-                    <div class="form__row">
-                        <label for="price">Price</label>
-                        <input type="number" name="price" id="price" step="0.10">
-                    </div>
-
-                    <div class="form__row">
-                        <button type="submit" class="form__button" id="button-submit">SAVE</button>
-                        <button type="button" class="form__button" id="button-clear">CLEAR</button>
-                    </div>
-                </form>
+                </div>
             </div>
-
         </div>
     </main>
 

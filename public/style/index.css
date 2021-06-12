@@ -73,13 +73,12 @@ select {
 }
 
 .buttons__container .button, form .form__row .form__button {
-  display: inline-block;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 calc(100% / 5);
-          flex: 0 1 calc(100% / 5);
+  width: 80%;
+  display: block;
+  margin: 0 auto 1em;
   padding: 0.5em;
-  border: 2px;
-  border-style: solid;
+  background-color: #fff;
+  border: 2px solid #282828;
   -webkit-box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.25);
   cursor: pointer;
@@ -90,8 +89,31 @@ select {
 
 @media (min-width: 768px) {
   .buttons__container .button, form .form__row .form__button {
-    border: 3px;
+    display: inline-block;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 calc(100% / 4);
+            flex: 0 1 calc(100% / 4);
+    border: 4px;
   }
+  .buttons__container .button:not(:last-child), form .form__row .form__button:not(:last-child) {
+    margin-right: 1em;
+  }
+}
+
+.results .table .js-button--edit::before, .results .table .js-button--delete::before {
+  display: inline-block;
+  padding-right: 0.25em;
+  font-family: "Font Awesome 5 Free";
+  font-size: 2rem;
+  font-weight: 900;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.results .table .js-button--edit:hover::before, .results .table .js-button--delete:hover::before, .results .table .js-button--edit:focus::before, .results .table .js-button--delete:focus::before {
+  opacity: 0.5;
 }
 
 /* ---------- GLOBAL ---------- */
@@ -186,15 +208,15 @@ header {
 }
 
 .buttons__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   margin-bottom: 2em;
 }
 
-.buttons__container .button {
-  background-color: #fbfbfb;
-  border-color: #282828;
+@media (min-width: 768px) {
+  .buttons__container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
 }
 
 .buttons__container .button:hover, .buttons__container .button:focus {
@@ -202,50 +224,89 @@ header {
   color: #fbfbfb;
 }
 
-.buttons__container .button:not(:last-child) {
-  margin-right: 0.1em;
-}
-
-@media (min-width: 768px) {
-  .buttons__container .button:not(:last-child) {
-    margin-right: 0.5em;
-  }
-}
-
-.buttons__container .button.sales:hover, .buttons__container .button.sales:focus {
-  background-color: #eb2f06;
-  border-color: #eb2f06;
-  color: #fbfbfb;
-}
-
-.results table {
+.results .table {
   display: none;
   width: 100%;
-  background-color: #fbfbfb;
-  border-collapse: separate;
-  border-spacing: 1em;
+  background-color: #fff;
+  border-collapse: collapse;
   -webkit-box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.25);
+  font-size: clamp(1rem, 1.6vw, 1.6rem);
 }
 
-.results table thead * {
+.results .table th,
+.results .table td {
+  border-bottom: 1px solid #dddddd;
+  padding: 0.5em;
+}
+
+.results .table tr:hover,
+.results .table tr:focus {
+  background-color: #fbfbfb;
+}
+
+.results .table thead * {
   color: #4a4a4a;
   text-align: left;
 }
 
-.results table tbody tr:hover,
-.results table tbody tr:focus {
+.results .table .js-button--edit,
+.results .table .js-button--delete {
+  display: contents;
+  border: none;
+  cursor: pointer;
+}
+
+.results .table .js-button--edit::before {
+  content: "\f14b";
+  color: #2ecc71;
+}
+
+.results .table .js-button--delete::before {
+  content: "\f146";
+  color: #eb2f06;
+}
+
+.modal {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+  overflow: auto;
+  z-index: 1;
+}
+
+.modal__content {
+  width: 80%;
+  margin: 8% auto;
+  padding: 2em 4em 4em;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.25);
+}
+
+.modal__content--btn-close {
+  color: #4a4a4a;
+  float: right;
+  font-size: 2rem;
   font-weight: 500;
 }
 
-.form__container {
-  display: none;
+.modal__content--btn-close:hover, .modal__content--btn-close:focus {
+  color: #282828;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 form {
   width: 100%;
   padding: 1em;
   background-color: #fbfbfb;
+  border: 1px solid #dddddd;
   -webkit-box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.25);
 }
@@ -273,19 +334,22 @@ form {
 
 form .form__row label {
   display: block;
+  color: #4a4a4a;
   font-weight: 500;
 }
 
-form .form__row input {
+form .form__row input,
+form .form__row select {
   width: 100%;
   padding: 0.25em 0.5em;
+  border: 1px solid #dddddd;
   cursor: pointer;
 }
 
 form .form__row .form__button {
   width: 49%;
   margin-top: 1em;
-  background-color: #fbfbfb;
+  background-color: #fff;
   border-color: #282828;
 }
 

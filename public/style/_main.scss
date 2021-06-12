@@ -24,34 +24,18 @@
 
 // Main
 .buttons__container {
-  display: flex;
   margin-bottom: 2em;
+
+  @include tablet {
+    display: flex;
+  }
 
   .button {
     @extend %buttons;
-    background-color: $color-lg-gray;
-    border-color: $color-text;
 
     &:hover,
     &:focus {
       background-color: $color-text;
-      color: $color-lg-gray;
-    }
-
-    &:not(:last-child) {
-      margin-right: 0.1em;
-
-      @include tablet {
-        margin-right: 0.5em;
-      }
-    }
-  }
-
-  .button.sales {
-    &:hover,
-    &:focus {
-      background-color: $color-red;
-      border-color: $color-red;
       color: $color-lg-gray;
     }
   }
@@ -59,36 +43,93 @@
 
 // Root
 .results {
-  table {
+  .table {
     display: none;
     width: 100%;
-    background-color: $color-lg-gray;
-    border-collapse: separate;
-    border-spacing: 1em;
+    background-color: #fff;
+    border-collapse: collapse;
+    // border-spacing: 1em;
     box-shadow: $box-shadow;
+    font-size: clamp(1rem, 1.6vw, 1.6rem);
+
+    & th,
+    & td {
+      border-bottom: 1px solid $color-gray;
+      padding: 0.5em;
+    }
+
+    & tr:hover,
+    & tr:focus {
+      background-color: $color-lg-gray;
+    }
 
     thead * {
       color: $color-dk-gray;
       text-align: left;
     }
 
-    tbody tr:hover,
-    tbody tr:focus {
+    .js-button--edit,
+    .js-button--delete {
+      display: contents;
+      border: none;
+      cursor: pointer;
+    }
+
+    .js-button--edit::before {
+      @extend %icons;
+      content: "\f14b";
+      color: $color-green;
+    }
+
+    .js-button--delete::before {
+      @extend %icons;
+      content: "\f146";
+      color: $color-red;
+    }
+  }
+}
+
+// Modal
+.modal {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  overflow: auto;
+  z-index: 1;
+
+  &__content {
+    width: 80%;
+    margin: 8% auto;
+    padding: 2em 4em 4em;
+    background-color: #fff;
+    box-shadow: $box-shadow;
+
+    &--btn-close {
+      color: $color-dk-gray;
+      float: right;
+      font-size: 2rem;
       font-weight: 500;
+
+      &:hover,
+      &:focus {
+        color: $color-text;
+        text-decoration: none;
+        cursor: pointer;
+      }
     }
   }
 }
 
 // Form
-
-.form__container {
-   display: none;
-}
-
 form {
-   width: 100%;
+  width: 100%;
   padding: 1em;
   background-color: $color-lg-gray;
+  border: 1px solid $color-gray;
   box-shadow: $box-shadow;
 
   @include tablet {
@@ -104,12 +145,15 @@ form {
 
     label {
       display: block;
+      color: $color-dk-gray;
       font-weight: 500;
     }
 
-    input {
+    input,
+    select {
       width: 100%;
       padding: 0.25em 0.5em;
+      border: 1px solid $color-gray;
       cursor: pointer;
     }
 
@@ -117,7 +161,7 @@ form {
       @extend %buttons;
       width: 49%;
       margin-top: 1em;
-      background-color: $color-lg-gray;
+      background-color: #fff;
       border-color: $color-text;
 
       &:hover,

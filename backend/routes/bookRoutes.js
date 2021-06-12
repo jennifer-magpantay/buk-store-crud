@@ -19,18 +19,19 @@ router.get("/", async (_req, res, next) => {
 });
 
 //get titles by id
-//http://localhost:3000/books/1
-// router.get("/:id", async (req, res, next) => {
-//   try {
-//     //readh the file
-//     const data = JSON.parse(await fs.readFile(global.fileName));
-//     //find the id in the file
-//     const book = data.books.find((item) => item.id === parseInt(req.params.id));
-//     res.send(book);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
+//http://localhost:3000/books/28
+router.get("/:id", async (req, res, next) => {
+  try {
+    //readh the file
+    const data = JSON.parse(await fs.readFile(global.fileName));
+
+    //find the id in the file
+    const book = data.books.find((item) => item.id === parseInt(req.params.id));
+    res.send(book);
+  } catch (err) {
+    next(err);
+  }
+});
 
 //get titles by title, using URL query
 //http://localhost:3000/books?title=It Catches My Heart in Its Hands
@@ -48,10 +49,11 @@ router.get("/", async (_req, res, next) => {
 // });
 
 //add a new title
+//http://localhost:3000/books
 router.post("/", async (req, res, next) => {
-  // res.setHeader("Access-Control-Allow-Origin", "*");
   try {
-    //create an variable that will hold the result of our request
+    //create an variable that will hold the params of our request
+    // all params are set in the body request
     let book = req.body;
     //read data
     const data = JSON.parse(await fs.readFile(global.fileName));
@@ -73,23 +75,15 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-//update a title
-// router.put("/:id", async (req, res, next) => {
-// updating passing all params as body required
+//update a title 
+//http://localhost:3000/books
 router.put("/", async (req, res, next) => {
   try {
-    //create an variable that will hold the result of our request
+   // all params are set in the body request
     let book = req.body;
     //read file
     const data = JSON.parse(await fs.readFile(global.fileName));
 
-    book = {
-      id: book.id,
-      title: book.title,
-      year: book.year,
-      price: book.price,
-      category: book.category,
-    };
     //find the index of the element inside the json file, where the item id is === id of the req.body
     const index = data.books.findIndex((item) => item.id === book.id);
 
@@ -99,11 +93,13 @@ router.put("/", async (req, res, next) => {
     //once it is found, set it the props you want to update
     // data.books[index].id = book.id;
     data.books[index].title = book.title;
+    data.books[index].category = book.category;
     data.books[index].year = book.year;
     data.books[index].price = book.price;
-    data.books[index].category = book.category;
-    //now, over write the file
+
+    //now, overwrite the file
     await fs.writeFile(global.fileName, JSON.stringify(data, null, 2));
+
     //return the element
     console.log(book.id);
     res.send(data.books[index]);
@@ -117,6 +113,7 @@ router.delete("/:id", async (req, res, next) => {
   try {
     //read file
     const data = JSON.parse(await fs.readFile(global.fileName));
+    
     //save the deleted id into an temp variable and return to the user
     let del = data.books.filter((item) => item.id === parseInt(req.params.id));
     //now, filter id we want to remove from the original json file
@@ -125,6 +122,7 @@ router.delete("/:id", async (req, res, next) => {
     );
     //and over write it, without the chosen id
     await fs.writeFile(global.fileName, JSON.stringify(data, null, 2));
+
     //return the data deleted
     res.send(del);
   } catch (err) {
